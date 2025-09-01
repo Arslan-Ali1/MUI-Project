@@ -189,17 +189,23 @@ export default function Content() {
                   </Box>
 
                   <AvatarGroup
-                    max={4}
-                    sx={{
-                      justifyContent: { xs: "flex-start", md: "center" },
-                      mt: { xs: 1, md: 0 },
-                      "& .MuiAvatar-root": { marginRight: 1, border: "2px solid #05215d" },
-                    }}
-                  >
-                    {proj.members.map((m, i) => (
-                      <Avatar key={i} src={m.img} alt={m.name} />
-                    ))}
-                  </AvatarGroup>
+  max={4}
+  sx={{
+    justifyContent: { xs: "flex-start", md: "center" },
+    mt: { xs: 1, md: 0 },
+    "& .MuiAvatar-root": { 
+      width: 28, 
+      height: 28, 
+      border: "2px solid #05215d", 
+      marginLeft: -1.3// yahan negative margin diya hai overlap ke liye
+    },
+  }}
+>
+  {proj.members.map((m, i) => (
+    <Avatar key={i} src={m.img} alt={m.name} />
+  ))}
+</AvatarGroup>
+
 
                   <Typography
                     sx={{
