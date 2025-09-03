@@ -5,11 +5,11 @@ import {
   TextField,
   Button,
   FormControlLabel,
-  Link,
   Grid,
   Paper,
   Switch,
 } from "@mui/material";
+import { Link } from "react-router-dom"; // ✅ React Router ka Link use karein
 
 export default function SignIn() {
   return (
@@ -17,19 +17,19 @@ export default function SignIn() {
       {/* Left Side with Image (Hide on mobile) */}
       <Grid
         item
-        xs={false} // hide on mobile
-        md={6}     // show 50% width on desktop
+        xs={false}
+        md={6}
         sx={{
           backgroundImage: "url('/bgSign.png')",
           backgroundSize: "cover",
           backgroundPosition: "center",
-          display: { xs: "none", md: "flex" }, // hide on xs, show on md
+          display: { xs: "none", md: "flex" },
           alignItems: "center",
           justifyContent: "center",
           flexDirection: "column",
           color: "white",
           p: 3,
-          width:{xs:"false",md:"50%"}
+          width: { xs: "false", md: "50%" },
         }}
       >
         <Typography variant="overline" sx={{ letterSpacing: 2 }}>
@@ -50,8 +50,8 @@ export default function SignIn() {
       {/* Right Side Form */}
       <Grid
         item
-        xs={12}   // full width on mobile
-        md={6}    // 50% width on desktop
+        xs={12}
+        md={6}
         component={Paper}
         elevation={0}
         square
@@ -63,11 +63,18 @@ export default function SignIn() {
           bgcolor: "#0a0e31",
           color: "white",
           p: { xs: 3, md: 4 },
-                  width:{xs:"100%",md:"50%"},
-                  
+          width: { xs: "100%", md: "50%" },
         }}
       >
-        <Box sx={{ width: "100%", maxWidth: 360, pt: { xs: 6, md: 10 } ,mt:20 ,mr:{xs:0,md:20} }}>
+        <Box
+          sx={{
+            width: "100%",
+            maxWidth: 360,
+            pt: { xs: 6, md: 10 },
+            mt: 20,
+            mr: { xs: 0, md: 20 },
+          }}
+        >
           <Typography variant="h4" fontWeight="bold" mb={1} color="#ffff">
             Nice to see you!
           </Typography>
@@ -125,6 +132,8 @@ export default function SignIn() {
               borderRadius: "20px",
               bgcolor: "#1a73e8",
               "&:hover": { bgcolor: "#1669c1" },
+              textDecoration: "none",
+              color: "white",
             }}
           >
             SIGN IN
@@ -137,7 +146,10 @@ export default function SignIn() {
             color="rgba(160, 174, 192, 1)"
           >
             Don’t have an account?{" "}
-            <Link href="#" underline="hover" sx={{ color: "#1a73e8" }}>
+            <Link
+              to="/signUp"
+              style={{ color: "#1a73e8", textDecoration: "none" }}
+            >
               Sign up
             </Link>
           </Typography>

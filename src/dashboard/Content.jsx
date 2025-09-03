@@ -133,7 +133,7 @@ export default function Content() {
     >
      <Grid container spacing={3}>
   {/* Projects Card */}
-  <Grid space xs={12} md={8}>
+  <Grid space xs={12} md={6} sx={{width:{xs:"100%",md:"67%"}}}>
     <Card
       sx={{
         borderRadius: 3,
@@ -147,7 +147,7 @@ export default function Content() {
         <Typography variant="h5" sx={{ fontWeight: "bold", color: "white" }}>
           Projects
         </Typography>
-        <Typography variant="body2" sx={{ color: "limegreen", mb: 2 }}>
+        <Typography variant="body2" sx={{ color: "limegreen", mb: 7 }}>
           ✔ 30 done this month
         </Typography>
 
@@ -283,7 +283,7 @@ export default function Content() {
 
 
         {/* Orders Overview Card */}
-        <Grid space xs={12} md={8} sx={{width:{xs:"100%",md:"35%"}}}>
+        <Grid space xs={12} md={8} sx={{width:{xs:"100%",md:"30%"}}}>
           <Card
             sx={{
               borderRadius: 3,

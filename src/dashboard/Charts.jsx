@@ -51,7 +51,9 @@ const Charts = () => {
   ];
 
   return (
-    <Box sx={{ width: { xs: "100%", md: "calc(100% - 270px)" }, ml: { md: "265px" }, mt: 1, p: 0 }}>
+    <Box  sx={{ p: 2,  width: { xs: "100%", md: "calc(100% - 260px)" },
+        ml: { xs: 0, md: "260px" },
+        mt: 1, }}>
       {/* Grid container */}
       <Grid container spacing={2}>
         
@@ -60,7 +62,7 @@ const Charts = () => {
           item 
           xs={12} 
           md={7} 
-          sx={{ flexBasis: { xs: "100%", md: "57%" }, maxWidth: { xs: "100%", md: "60%" } } }
+          sx={{ flexBasis: { xs: "100%", md: "57%" }, maxWidth: { xs: "100%", md: "70%" } } }
         >
           <Card sx={{ backgroundColor: "#06275f", borderRadius: "16px", color: "#fff", boxShadow: "0 4px 20px rgba(0,0,0,0.5)",height: "420px" }}>
             <CardContent>
