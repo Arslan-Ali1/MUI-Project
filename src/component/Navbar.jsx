@@ -5,19 +5,23 @@ import {
   Typography,
   Box,
   InputBase,
-  IconButton
+  IconButton,
 } from "@mui/material";
 import SearchIcon from "@mui/icons-material/Search";
 import PersonIcon from "@mui/icons-material/Person";
 import SettingsIcon from "@mui/icons-material/Settings";
 import NotificationIcon from "@mui/icons-material/Notifications";
-
-
+import { useLocation } from "react-router-dom"; 
+import HomeIcon from '@mui/icons-material/Home';
 export default function Navbar() {
+  const location = useLocation();
+
+  // Path se page ka name nikalna
+  const pathName = location.pathname.split("/").filter(Boolean); 
+  const currentPage = pathName[pathName.length - 1] || "Dashboard"; 
+
   return (
     <>
-    
-
       {/* Top Navbar */}
       <AppBar
         position="fixed"
@@ -27,10 +31,11 @@ export default function Navbar() {
           ml: { xs: 0, md: "260px" },
           mt: "10px",
           borderRadius: "8px",
-          backgroundColor: "#042154",
+          backgroundColor: "#061c45",
           px: 2,
           height: 52,
           justifyContent: "center",
+          minHeight: "70px",
         }}
       >
         <Toolbar
@@ -44,15 +49,15 @@ export default function Navbar() {
           <Box>
             <Typography
               variant="caption"
-              sx={{ color: "gray", display: "block", fontSize: "0.75rem" }}
+              sx={{ color: "gray", display: "flex",alignItems:"center", fontSize: "14px" ,gap:0.5 }}
             >
-              Pages / Dashboard
+              <HomeIcon   sx={{ color: "gray", fontSize: "18px"}}/> / {currentPage}
             </Typography>
             <Typography
               variant="body1"
-              sx={{ color: "white", fontWeight: "bold" }}
+              sx={{ color: "white", fontWeight: "bold", textTransform: "capitalize" }}
             >
-              Dashboard
+              {currentPage}
             </Typography>
           </Box>
 
@@ -88,7 +93,7 @@ export default function Navbar() {
                 }}
               />
             </Box>
-         
+
             {/* Sign In */}
             <IconButton sx={{ color: "#718096", fontSize: "0.8rem" }}>
               <PersonIcon fontSize="small" />
@@ -98,18 +103,17 @@ export default function Navbar() {
                 Sign In
               </Typography>
             </IconButton>
- <Box sx={{mr:"30px"}} >
+            <Box sx={{ mr: "30px" }}>
+              {/* Settings */}
+              <IconButton sx={{ color: "#718096" }}>
+                <SettingsIcon fontSize="small" />
+              </IconButton>
 
-            {/* Settings */}
-            <IconButton sx={{ color: "#718096" }}>
-              <SettingsIcon fontSize="small" />
-            </IconButton>
-
-            {/* Notification */}
-            <IconButton sx={{ color: "#718096" }}>
-              <NotificationIcon fontSize="small" />
-            </IconButton>
- </Box>
+              {/* Notification */}
+              <IconButton sx={{ color: "#718096" }}>
+                <NotificationIcon fontSize="small" />
+              </IconButton>
+            </Box>
           </Box>
         </Toolbar>
       </AppBar>

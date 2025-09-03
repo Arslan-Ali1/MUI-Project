@@ -294,8 +294,8 @@ export default function Sidebar() {
           onClick={() => setOpen(true)}
           sx={{
             position: "fixed",
-            top: 16,
-            right: 30,
+            top: 24 ,
+            right: 20,
             color: "#0075ff",
             zIndex: 1300
           }}

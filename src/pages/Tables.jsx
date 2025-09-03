@@ -117,7 +117,8 @@ export default function Tables() {
       sx={{
         width: { xs: "100%", md: "calc(100% - 260px)" },
         ml: { xs: 0, md: "260px" },
-        mt:10
+        mt:10,
+        backgroundColor:"#013578"
       }}
     >
       {/* Authors Card */}
@@ -126,7 +127,7 @@ export default function Tables() {
           sx={{
             width: "100%",
             borderRadius: 2,
-            bgcolor: "#0B1537",
+            bgcolor: "#042056",
             boxShadow: "0px 4px 20px rgba(0, 0, 0, 0.5)",
           }}
         >
@@ -252,7 +253,7 @@ export default function Tables() {
           sx={{
             width: "100%",
             borderRadius: 2,
-            bgcolor: "#0B1537",
+            bgcolor: "#042056",
             boxShadow: "0px 4px 20px rgba(0, 0, 0, 0.5)",
           }}
         >

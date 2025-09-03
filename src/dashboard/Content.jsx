@@ -131,134 +131,159 @@ export default function Content() {
         minHeight: "100vh",
       }}
     >
-      <Grid container spacing={3}>
-        {/* Projects Card */}
-        <Grid item xs={12} md={8}>
-          <Card
+     <Grid container spacing={3}>
+  {/* Projects Card */}
+  <Grid space xs={12} md={8}>
+    <Card
+      sx={{
+        borderRadius: 3,
+        bgcolor: "#05215d",
+        boxShadow: "0px 4px 20px rgba(0,0,0,0.5)",
+        p: 1,
+        height: "100%",
+      }}
+    >
+      <CardContent>
+        <Typography variant="h5" sx={{ fontWeight: "bold", color: "white" }}>
+          Projects
+        </Typography>
+        <Typography variant="body2" sx={{ color: "limegreen", mb: 2 }}>
+          ✔ 30 done this month
+        </Typography>
+
+        {/* Header Row */}
+        <Box
+          sx={{
+            display: "flex",
+            justifyContent: { xs: "flex-start", md: "space-between" },
+            gap: 4,
+            px: 1,
+            color: "#ffff",
+            fontSize: 14,
+          }}
+        >
+          <Typography sx={{ color: "rgba(160, 174, 192, 1)"  }}>COMPANIES</Typography>
+          <Typography sx={{ color: "rgba(160, 174, 192, 1)"  ,ml:{xs:10} }}>MEMBERS</Typography>
+
+          {/* Hide in mobile */}
+          <Typography
+            sx={{ color: "rgba(160, 174, 192, 1)", display: { xs: "none", md: "block" } }}
+          >
+            BUDGET
+          </Typography>
+          <Typography
+            sx={{ color: "rgba(160, 174, 192, 1)", display: { xs: "none", md: "block" } }}
+          >
+            COMPLETION
+          </Typography>
+        </Box>
+
+        {projects.map((proj, index) => (
+          <Box
+            key={index}
             sx={{
-              borderRadius: 3,
-              bgcolor: "#05215d",
-              boxShadow: "0px 4px 20px rgba(0,0,0,0.5)",
-              p: 1,
-              height: "100%",
+              display: "flex",
+              flexDirection: { xs: "row", md: "row" },
+              alignItems: "center",
+              justifyContent: { xs: "flex-start", md: "space-between" },
+              mt: 3,
+              gap: { xs: 4, md: 1 },
+              borderBottom: "1px solid rgba(255,255,255,0.1)",
+              pb: 2,
+              flexWrap: "wrap",
+              mb:4
             }}
           >
-            <CardContent>
-              <Typography variant="h5" sx={{ fontWeight: "bold", color: "white" }}>
-                Projects
+            {/* Company Name */}
+            <Box
+              sx={{
+                display: "flex",
+                alignItems: "center",
+                gap: 1,
+                flex: 1,
+                minWidth: 0,
+              }}
+            >
+              {proj.icon}
+              <Typography sx={{ color: "white", wordBreak: "break-word", flex: 1, minWidth: 0 }}>
+                {proj.name}
               </Typography>
-              <Typography variant="body2" sx={{ color: "limegreen", mb: 2 }}>
-                ✔ 30 done this month
-              </Typography>
+            </Box>
 
-              <Box
-                sx={{
-                  display: "flex",
-                  justifyContent: "space-between",
-                  px: 1,
-                  color: "#ffff",
-                  fontSize: 14,
-                }}
-              >
-                <Typography sx={{ color: "rgba(160, 174, 192, 1)" }}>COMPANIES</Typography>
-                <Typography sx={{ color: "rgba(160, 174, 192, 1)" }}>MEMBERS</Typography>
-                <Typography sx={{ color: "rgba(160, 174, 192, 1)" }}>BUDGET</Typography>
-                <Typography sx={{ color: "rgba(160, 174, 192, 1)" }}>COMPLETION</Typography>
-              </Box>
-
-              {projects.map((proj, index) => (
-                <Box
-                  key={index}
-                  sx={{
-                    display: "flex",
-                    flexDirection: { xs: "column", md: "row" },
-                    alignItems: { xs: "flex-start", md: "center" },
-                    justifyContent: "space-between",
-                    mt: 2,
-                    gap: 1,
-                    borderBottom: "1px solid rgba(255,255,255,0.1)",
-                    pb: 2,
-                    flexWrap: "wrap",
-                  }}
-                >
-                  <Box sx={{ display: "flex", alignItems: "center", gap: 1, flex: 1, minWidth: 0, mt: 3 }}>
-                    {proj.icon}
-                    <Typography sx={{ color: "white", wordBreak: "break-word", flex: 1, minWidth: 0 }}>
-                      {proj.name}
-                    </Typography>
-                  </Box>
-
-                  <AvatarGroup
-  max={4}
-  sx={{
-    justifyContent: { xs: "flex-start", md: "center" },
-    mt: { xs: 1, md: 0 },
-    "& .MuiAvatar-root": { 
-      width: 28, 
-      height: 28, 
-      border: "2px solid #05215d", 
-      marginLeft: -1.3// yahan negative margin diya hai overlap ke liye
-    },
-  }}
->
-  {proj.members.map((m, i) => (
-    <Avatar key={i} src={m.img} alt={m.name} />
-  ))}
-</AvatarGroup>
-
-
-                  <Typography
-                    sx={{
-                      width: { xs: "100%", md: 220 },
-                      textAlign: { xs: "left", md: "center" },
-                      color: "white",
-                      mt: { xs: 1, md: 0 },
-                    }}
-                  >
-                    {proj.budget}
-                  </Typography>
-
-                  <Box sx={{ width: { xs: "100%", md: 120 }, mt: { xs: 1, md: 0 } }}>
-                    
-                                            <Box sx={{ display: "flex",flexDirection:"column", alignItems: "left" }}>
-                                                 <Box sx={{ minWidth: 30 }}>
-                                                <Typography
-                                                  variant="caption"
-                                                  sx={{ color: "#A0AEC0" }}
-                                                  >
-                                                    {`${proj.completion}%`}
-                                                </Typography>
-                                              </Box>
-                                              <Box sx={{ width: "100%", mr: 1 }}>
-                                                <LinearProgress
-                                                  variant="determinate"
-                                                  value={proj.completion}
-                                                  sx={{
-                                                    height: 6,
-                                                    borderRadius: 5,
-                                                    backgroundColor: "#2D3748",
-                                                    "& .MuiLinearProgress-bar": {
-                                                      backgroundColor:
-                                                        proj.status === "Done"
-                                                          ? "#01B574"
-                                                          : proj.status === "Working"
-                                                          ? "#3182CE"
-                                                          :  "#3182CE",
-                                                    },
-                                                  }}
-                                                />
-                                              </Box>
-                                            </Box>
-                                          
-                  </Box>
-                </Box>
+            {/* Members */}
+            <AvatarGroup
+              max={4}
+              sx={{
+                justifyContent: { xs: "flex-start", md: "center" },
+                "& .MuiAvatar-root": {
+                  width: 28,
+                  height: 28,
+                  border: "2px solid #05215d",
+                  marginLeft: -1.3,
+                },
+              }}
+            >
+              {proj.members.map((m, i) => (
+                <Avatar key={i} src={m.img} alt={m.name} />
               ))}
-            </CardContent>
-          </Card>
-        </Grid>
+            </AvatarGroup>
+
+            {/* Budget (hide in mobile) */}
+            <Typography
+              sx={{
+                width: { xs: "100%", md: 220 },
+                textAlign: { xs: "left", md: "center" },
+                color: "white",
+                display: { xs: "none", md: "block" },
+              }}
+            >
+              {proj.budget}
+            </Typography>
+
+            {/* Completion (hide in mobile) */}
+            <Box
+              sx={{
+                width: { xs: "100%", md: 120 },
+                display: { xs: "none", md: "block" },
+              }}
+            >
+              <Box sx={{ display: "flex", flexDirection: "column", alignItems: "left" }}>
+                <Box sx={{ minWidth: 30 }}>
+                  <Typography variant="caption" sx={{ color: "#A0AEC0" }}>
+                    {`${proj.completion}%`}
+                  </Typography>
+                </Box>
+                <Box sx={{ width: "100%", mr: 1 }}>
+                  <LinearProgress
+                    variant="determinate"
+                    value={proj.completion}
+                    sx={{
+                      height: 6,
+                      borderRadius: 5,
+                      backgroundColor: "#2D3748",
+                      "& .MuiLinearProgress-bar": {
+                        backgroundColor:
+                          proj.status === "Done"
+                            ? "#01B574"
+                            : proj.status === "Working"
+                            ? "#3182CE"
+                            : "#3182CE",
+                      },
+                    }}
+                  />
+                </Box>
+              </Box>
+            </Box>
+          </Box>
+        ))}
+      </CardContent>
+    </Card>
+  </Grid>
+
+
 
         {/* Orders Overview Card */}
-        <Grid item xs={12} md={4} sx={{width:{xs:"100%",md:"27%"}}}>
+        <Grid space xs={12} md={8} sx={{width:{xs:"100%",md:"35%"}}}>
           <Card
             sx={{
               borderRadius: 3,

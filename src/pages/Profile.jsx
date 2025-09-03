@@ -21,6 +21,8 @@ import BatteryChargingFullIcon from "@mui/icons-material/BatteryChargingFull";
 import DirectionsCarIcon from "@mui/icons-material/DirectionsCar";
 import FlashOnIcon from "@mui/icons-material/FlashOn";
 import ShowChartIcon from '@mui/icons-material/ShowChart';
+import { CircularProgress } from "@mui/material";
+
 
 
 
@@ -77,24 +79,90 @@ export default function Profile() {
         {/* ======================
             Top Row: User Card (Full Width)
             ====================== */}
-        <Grid item xs={12} sx={{width:{xs:"100%",md:"100%"}}}>
-          <Card sx={{ p: 2, borderRadius: 2, background: "linear-gradient(90deg,#061a3a,#07182c)", color: "white" }}>
-            <Stack direction={{ xs: "column", md: "row" }} alignItems="center" justifyContent="space-between">
-              <Stack direction="row" spacing={2} alignItems="center">
-                <Avatar variant="square" sx={{ width: 80, height: 80, bgcolor: "#2345b8" }} src="/logo.png" alt="Profile" />
-                <Box>
-                  <Typography variant="h6" color="#fff">Mark Johnson</Typography>
-                  <Typography variant="body2" color="#fff">mark@simmmple.com</Typography>
-                </Box>
-              </Stack>
-              <Box sx={{ display: "flex", gap: 1, mt: { xs: 2, md: 0 } }}>
-                <Button variant="text" sx={{ textTransform: "none", "&:hover": { bgcolor: "#1565c0", color: "white" } ,width:{xs:"inline",md:"100%"}}}>Overview</Button>
-                <Button variant="text" sx={{ textTransform: "none", "&:hover": { bgcolor: "#1565c0", color: "white" } ,width:{xs:"100%",md:"100%"}}}>Teams</Button>
-                <Button variant="text" sx={{ textTransform: "none", "&:hover": { bgcolor: "#1565c0", color: "white" },width:{xs:"100%",md:"100%"} }}>Projects</Button>
-              </Box>
-            </Stack>
-          </Card>
-        </Grid>
+      <Grid item xs={12} sx={{ width: { xs: "100%", md: "100%" } }}>
+  <Card
+    sx={{
+      p: 2,
+      borderRadius: 2,
+      background: "linear-gradient(90deg,#061a3a,#07182c)",
+      color: "white",
+    }}
+  >
+    <Stack
+      direction={{ xs: "column", md: "row" }}
+      alignItems={{ xs: "flex-start", md: "center" }}
+      justifyContent="space-between"
+      spacing={2}
+    >
+      {/* Logo and Text */}
+      <Stack
+        direction={{ xs: "column", md: "row" }}
+        spacing={2}
+        alignItems={{ xs: "flex-start", md: "center" }}
+        width="100%"
+      >
+        <Avatar
+          variant="square"
+          sx={{ width: 80, height: 80, bgcolor: "#2345b8" ,m:5}}
+          src="/logo.png"
+          alt="Profile"
+          
+        />
+        <Box>
+          <Typography variant="h6" color="#fff">
+            Mark Johnson
+          </Typography>
+          <Typography variant="body2" color="#fff">
+            mark@simmmple.com
+          </Typography>
+        </Box>
+      </Stack>
+
+      {/* Buttons */}
+      <Box
+        sx={{
+          display: "flex",
+          flexDirection: { xs: "column", md: "row" },
+          gap: 1,
+          mt: { xs: 2, md: 0 },
+          width: { xs: "100%", md: "auto" },
+        }}
+      >
+        <Button
+          variant="text"
+          sx={{
+            textTransform: "none",
+            "&:hover": { bgcolor: "#1565c0", color: "white" },
+            width: { xs: "100%", md: "auto" },
+          }}
+        >
+          Overview
+        </Button>
+        <Button
+          variant="text"
+          sx={{
+            textTransform: "none",
+            "&:hover": { bgcolor: "#1565c0", color: "white" },
+            width: { xs: "100%", md: "auto" },
+          }}
+        >
+          Teams
+        </Button>
+        <Button
+          variant="text"
+          sx={{
+            textTransform: "none",
+            "&:hover": { bgcolor: "#1565c0", color: "white" },
+            width: { xs: "100%", md: "auto" },
+          }}
+        >
+          Projects
+        </Button>
+      </Box>
+    </Stack>
+  </Card>
+</Grid>
+
 
         {/* ======================
             Second Row: Welcome, Car Info, Profile Info
@@ -130,7 +198,7 @@ export default function Profile() {
           </Grid>
 
           {/* Car Info */}
-        <Grid
+           <Grid
   item
   xs={12}
   sx={{ width: { xs: "100%", md: "40%" } }}
@@ -141,7 +209,7 @@ export default function Profile() {
       borderRadius: 3,
       background: "linear-gradient(135deg, #041e4e, #05307a)",
       color: "#fff", 
-     height:"377px",
+     height:{sx:"100vh",md:"377px"},
       display: "flex",
       flexDirection: "column",
     }}
@@ -155,64 +223,90 @@ export default function Profile() {
     </Typography>
 
     {/* ✅ Flex Layout for Circle + Stats */}
-    <Box sx={{ display: "flex", flex: 1, gap: 2,mt:3 }}>
+    <Box sx={{ display: "flex", flex: 1, gap: 2,mt:3,flexDirection:{ xs: "column", md: "row" }}}>
       {/* Left Circular Gauge */}
-      <Box >
+    <Box
+  sx={{
+    flex: "0 0 32%",
+    display: "flex",
+    flexDirection: "column",
+    alignItems: "center",
+    gap: 2,
+  }}
+>
+  {/* Circular Gauge with Green Progress */}
+  <Box sx={{ position: "relative", display: "inline-flex" }}>
+    {/* Background Circular Progress (light grey) */}
+    <CircularProgress
+      variant="determinate"
+      value={100}
+      size={140}
+      thickness={4}
+      sx={{ color: "rgba(255,255,255,0.1)" }}
+    />
+    {/* Foreground Circular Progress (green, percentage) */}
+    <CircularProgress
+      variant="determinate"
+      value={68} // 👈 yahan percentage ke hisaab se green line
+      size={140}
+      thickness={4}
+      sx={{
+        color: "#10d876",
+        position: "absolute",
+        left: 0,
+      }}
+    />
 
-      <Box
-        sx={{
-          flex: "0 0 45%",
-          display: "flex",
-          flexDirection: "column",
-          alignItems: "center",
-          // justifyContent: "",
-          gap: 2,
-          
-        }}
+    {/* Center Content */}
+    <Box
+      sx={{
+        width: 140,
+        height: 140,
+        borderRadius: "50%",
+        display: "flex",
+        alignItems: "center",
+        justifyContent: "center",
+        position: "absolute",
+        top: 0,
+        left: 0,
+      }}
+    >
+      <BatteryChargingFullIcon
+        sx={{ fontSize: 28, color: "#10d876", mt: 10 }}
+      />
+      <Box sx={{ textAlign: "center", position: "absolute" }}>
+        <Typography
+          variant="h4"
+          fontWeight="bold"
+          sx={{ color: "#fff" }}
         >
-        <Box
-          sx={{
-            width: 140,
-            height: 140,
-            borderRadius: "50%",
-            bgcolor: "rgba(255,255,255,0.05)",
-            display: "flex",
-            alignItems: "center",
-            justifyContent: "center",
-            position: "relative",
-          }}
-        >
-          <BatteryChargingFullIcon
-          sx={{ fontSize: 28, color: "#10d876", mt: 10 }}
-        />
-          <Typography
-            variant="h4"
-            fontWeight="bold"
-            sx={{ position: "absolute", color: "#fff" }}
-            >
-            68%
-          <Typography variant="subtitle2" sx={{ color: "#fff" }}>
-            Current load
-          </Typography>
-          </Typography>
-        </Box>
-        <Box textAlign="center">
-          <Typography variant="caption" sx={{ color: "#fff" }}>
-            0h 58 min <br /> Time to full charge
-          </Typography>
-        </Box>
+          68%
+        </Typography>
+        <Typography variant="subtitle2" sx={{ color: "#fff" }}>
+          Current load
+        </Typography>
       </Box>
-          </Box>
+    </Box>
+  </Box>
+
+  {/* Time to full charge */}
+  <Box textAlign="center">
+    <Typography variant="caption" sx={{ color: "#fff" }}>
+      0h 58 min <br /> Time to full charge
+    </Typography>
+  </Box>
+</Box>
+
 
       {/* Right Stats */}
       <Box sx={{ flex: 2 }}>
         <Grid container spacing={1}>
           <Grid item xs={6} sx={{width:{xs:"100%",md:"45%"}}}>
             <Card sx={{ bgcolor: "rgba(255,255,255,0.05)", borderRadius: 2, p: 2 }}>
-              <Stack spacing={1} display={"flex"} flexDirection={"row"} gap={3}>
+              <Stack spacing={1} display={"flex"} flexDirection={"row"} gap={3} sx={{justifyContent:{xs:"space-between"}}}>
                 <Box display="flex" alignItems="left" flexDirection={"column"} gap={1}>
-                <Typography variant="subtitle2" sx={{ color: "#fff" ,fontSize:"10px"}}>
-                  Battery Health  
+                <Typography variant="subtitle2" sx={{ color: "#fff" ,fontSize:"12px"}}>
+                  Health  
                 </Typography>
                   <Typography variant="h6" fontWeight="bold" sx={{ color: "#fff" }}>
                     76%
@@ -224,7 +318,7 @@ export default function Profile() {
           </Grid>
           <Grid item xs={6} sx={{width:{xs:"100%",md:"45%"}}}>
             <Card sx={{ bgcolor: "rgba(255,255,255,0.05)", borderRadius: 2, p: 2 }}>
-              <Stack spacing={1} display={"flex"} flexDirection={"row"} gap={2} >
+              <Stack spacing={1} display={"flex"} flexDirection={"row"} gap={2} sx={{justifyContent:{xs:"space-between"}}} >
                 <Box display={"flex"} flexDirection={"column"}>
 
                 <Typography variant="subtitle2" sx={{ color: "#fff" }}>
@@ -240,7 +334,7 @@ export default function Profile() {
           </Grid>
           <Grid item xs={6} sx={{width:{xs:"100%",md:"45%"}}}>
             <Card sx={{ bgcolor: "rgba(255,255,255,0.05)", borderRadius: 2, p: 2 }}>
-              <Stack spacing={1} display={"flex"} flexDirection={"row"} alignItems={"center"}gap={2}>
+              <Stack spacing={1} display={"flex"} flexDirection={"row"} alignItems={"center"}gap={2} sx={{justifyContent:{xs:"space-between"}}}>
                 <Box display={"flex"} flexDirection={"column"}>
 
                 <Typography variant="subtitle2" sx={{ color: "#fff",fontSize:"10px" }}>
@@ -259,18 +353,18 @@ export default function Profile() {
           </Grid>
           <Grid item xs={6} sx={{width:{xs:"100%",md:"45%"}}}>
             <Card sx={{ bgcolor: "rgba(255,255,255,0.05)", borderRadius: 2, p: 2 }}>
-              <Stack spacing={1} display={"flex"} flexDirection={"row"} gap={2}>
+              <Stack spacing={1} display={"flex"} flexDirection={"row"} alignItems={"center"}gap={2} sx={{justifyContent:{xs:"space-between"}}}>
                 <Box display={"flex"} flexDirection={"column"}>
 
                 <Typography variant="subtitle2" sx={{ color: "#fff" }}>
-                  This Week
+                  Week
                 </Typography>
                 <Typography variant="h6" fontWeight="bold" sx={{ color: "#fff" }}>
-                  1.342 km
+                  1.3km
                 </Typography>
                 </Box>
                 <ShowChartIcon sx={{color:"green",fontSize:"large",height:"50px",width:"40px"}}/>
-                <Box sx={{ height: 20, bgcolor: "rgba(255,255,255,0.08)", borderRadius: 1 }} />
+               
               </Stack>
             </Card>
           </Grid>
@@ -320,12 +414,12 @@ export default function Profile() {
             ====================== */}
         <Grid item xs={12} container spacing={3}>
           {/* Platform Settings */}
-          <Grid item xs={12} md={6} sx={{width:{xs:"100%",md:"25%"}}}>
+          <Grid item xs={12} md={6} sx={{width:{xs:"100%",md:"30%"}}}>
             <Card sx={{ p: 2, borderRadius: "20px", backgroundColor: "#061133",  }}>
               <Typography variant="h6" color="#fff">Platform Settings</Typography>
               <Divider sx={{ my: 1 }} />
               <Box p={1}>
-                <Typography fontSize={"20px"} mb={2} color="rgba(160, 174, 192, 1)">Account</Typography>
+                <Typography fontSize={"20px"} mb={3} color="rgba(160, 174, 192, 1)">Account</Typography>
                 <Stack direction="row" justifyContent="space-between" alignItems="center" mb={2}>
                   <FormControlLabel control={<Switch defaultChecked sx={{ color: "white" }} />} label="" />
                   <Typography variant="body2" color="rgba(160, 174, 192, 1)" fontSize={"16px"}>Email me when someone follows me</Typography>
@@ -335,7 +429,7 @@ export default function Profile() {
                   <Typography variant="body2" color="rgba(160, 174, 192, 1)" fontSize={"16px"}>Email me when someone follows me</Typography>
                 </Stack>
 
-                <Typography fontSize={"20px"} mt={2} mb={1} color="rgba(160, 174, 192, 1)">Application</Typography>
+                <Typography fontSize={"20px"} mt={2} mb={2} color="rgba(160, 174, 192, 1)">Application</Typography>
                 <Stack direction="row" alignItems="center" mb={2}>
                   <FormControlLabel control={<Switch defaultChecked sx={{ color: "white" }} />} label="" />
                   <Typography variant="body2" color="rgba(160,174,192,1) " fontSize={"16px"}>New launches and projects</Typography>
@@ -357,103 +451,119 @@ export default function Profile() {
           </Grid>
 
           {/* Projects */}
-          <Box sx={{ bgcolor: "rgba(6,11,40,0.94)", p: 3, borderRadius: 3 ,width:{xs:"100%",md:"70%"} }}>
-      <Typography variant="h6" sx={{ color: "#fff", mb: 1 }}>
-        Projects
-      </Typography>
-      <Typography variant="body2" sx={{ color: "rgba(255,255,255,0.7)", mb: 3 }}>
-        Architects design houses
-      </Typography>
-
-      <Box
+         <Box
   sx={{
-    display: "flex",
-    gap: 3,
-    width: "100%",
+    bgcolor: "rgba(6,11,40,0.94)",
+    p: 3,
+    borderRadius: 3,
+    width: { xs: "100%", md: "67%" },
   }}
 >
-  {projects.slice(0, 3).map((project) => ( // sirf 3 projects show karne ke liye slice(0,3)
-    <Card
-      key={project.id}
-      sx={{
-        flex: {
-          xs: "1 1 100%",            // 📱 Mobile: full width
-          sm: "1 1 calc(50% - 16px)",// 📲 Tablet: 2 columns
-          md: "1 1 calc(33.33% - 16px)", // 💻 Desktop: 3 columns
-        },
-        bgcolor: "transparent",
-        color: "#fff",
-        borderRadius: 3,
-        boxShadow: "0 4px 20px rgba(0,0,0,0.4)",
-        overflow: "hidden",
-      }}
-    >
-      {/* Image */}
-      <Box
+  {/* Heading */}
+  <Typography variant="h6" sx={{ color: "#fff", mb: 1 }}>
+    Projects
+  </Typography>
+  <Typography
+    variant="body2"
+    sx={{ color: "rgba(255,255,255,0.7)", mb: 3 }}
+  >
+    Architects design houses
+  </Typography>
+
+  {/* Cards Container */}
+  <Box
+    sx={{
+      display: "flex",
+      gap: 3,
+      width: "100%",
+      flexDirection: { xs: "column", md: "row" }, // 📱 Mobile: column, 💻 Desktop: row
+    }}
+  >
+    {projects.slice(0, 3).map((project) => (
+      <Card
+        key={project.id}
         sx={{
-          height: 180,
-          backgroundImage: `url(${project.image})`,
-          backgroundSize: "cover",
-          backgroundPosition: "center",
+          flex: {
+            xs: "1 1 100%", // 📱 Mobile: full width
+            sm: "1 1 calc(50% - 16px)", // 📲 Tablet: 2 columns
+            md: "1 1 calc(33.33% - 16px)", // 💻 Desktop: 3 columns
+          },
+          bgcolor: "transparent",
+          color: "#fff",
+          borderRadius: 3,
+          boxShadow: "0 4px 20px rgba(0,0,0,0.4)",
+          overflow: "hidden",
         }}
-      />
-
-      <CardContent>
-        <Typography
-          variant="caption"
-          sx={{ color: "rgba(255,255,255,0.6)" }}
-        >
-          {project.subtitle}
-        </Typography>
-        <Typography variant="h6" sx={{ mt: 0.5, mb: 1 ,color:"white" }}>
-          {project.title}
-        </Typography>
-        <Typography
-          variant="body2"
-          sx={{ color: "rgba(160, 174, 192, 1)", mb: 2 ,fontSize:"16px" }}
-        >
-          {project.description}
-        </Typography>
-
-        {/* Bottom Row: Avatars + Button */}
+      >
+        {/* Image */}
         <Box
           sx={{
-            display: "flex",
-            justifyContent: "space-between",
-            alignItems: "center",
+            height: 180,
+            backgroundImage: `url(${project.image})`,
+            backgroundSize: "cover",
+            backgroundPosition: "center",
           }}
-        >
-          {/* Button */}
-          <Button
-            size="small"
-            variant="outlined"
+        />
+
+        <CardContent>
+          <Typography
+            variant="caption"
+            sx={{ color: "rgba(255,255,255,0.6)" }}
+          >
+            {project.subtitle}
+          </Typography>
+          <Typography variant="h6" sx={{ mt: 0.5, mb: 1, color: "white" }}>
+            {project.title}
+          </Typography>
+          <Typography
+            variant="body2"
             sx={{
-              borderColor: "#fff",
-              color: "#fff",
-              textTransform: "none",
-              px: 2,
-              "&:hover": {
-                borderColor: "#00bfff",
-                color: "#00bfff",
-              },
+              color: "rgba(160, 174, 192, 1)",
+              mb: 2,
+              fontSize: "16px",
             }}
           >
-            View All
-          </Button>
-          {/* Avatars */}
-          <Stack direction="row" spacing={-1}>
-            <Avatar src="/1.png" sx={{ width: 28, height: 28 }} />
-            <Avatar src="/2.png" sx={{ width: 28, height: 28 }} />
-            <Avatar src="/3.png" sx={{ width: 28, height: 28 }} />
-            <Avatar src="/4.png" sx={{ width: 28, height: 28 }} />
-          </Stack>
+            {project.description}
+          </Typography>
 
-        </Box>
-      </CardContent>
-    </Card>
-  ))}
+          {/* Bottom Row */}
+          <Box
+            sx={{
+              display: "flex",
+              justifyContent: "space-between",
+              alignItems: "center",
+            }}
+          >
+            <Button
+              size="small"
+              variant="outlined"
+              sx={{
+                borderColor: "#fff",
+                color: "#fff",
+                textTransform: "none",
+                px: 2,
+                "&:hover": {
+                  borderColor: "#00bfff",
+                  color: "#00bfff",
+                },
+              }}
+            >
+              View All
+            </Button>
+
+            <Stack direction="row" spacing={-1}>
+              <Avatar src="/1.png" sx={{ width: 28, height: 28 }} />
+              <Avatar src="/2.png" sx={{ width: 28, height: 28 }} />
+              <Avatar src="/3.png" sx={{ width: 28, height: 28 }} />
+              <Avatar src="/4.png" sx={{ width: 28, height: 28 }} />
+            </Stack>
+          </Box>
+        </CardContent>
+      </Card>
+    ))}
+  </Box>
 </Box>
-    </Box>
+
         </Grid>
       </Grid>
     </Box>

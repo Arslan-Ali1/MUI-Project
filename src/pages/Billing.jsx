@@ -37,7 +37,7 @@ function Billing() {
         
         {/* First Row */}
         <Grid container spacing={3}>
-          <Grid item xs={12} md={4} sx={{width:{xs:"100%",md:"30%"}}}>
+          <Grid item xs={12} md={4} sx={{width:{xs:"100%",md:"27%"}}}>
             <Card sx={{
               bgcolor: "rgba(34,40,72,0.85)",
               boxShadow: 6,
@@ -72,11 +72,11 @@ function Billing() {
             </Card>
           </Grid>
 
-          <Grid item xs={12} md={4} sx={{width:{xs:"100%",md:"40%"}}}>
+          <Grid item xs={12} md={4} sx={{width:{xs:"100%",md:"33%"}}}>
             <Card sx={{
               backgroundColor: "#052e66",
               boxShadow: 6,
-              height: "24 9px",
+              height: "239px",
               borderRadius: "20px"
             }}>
               <CardContent sx={{ color: "#fff" }}>
@@ -102,12 +102,12 @@ function Billing() {
             </Card>
           </Grid>
 
-          <Grid item xs={12} md={4} sx={{width:{xs:"100%",md:"25%"}}}>
-            <Card sx={{ bgcolor: "#051738", boxShadow: 6, height: "436px", borderRadius: "20px" }}>
+          <Grid item xs={12} md={4} sx={{width:{xs:"100%",md:"35%"}}}>
+            <Card sx={{ bgcolor: "#061f4b", boxShadow: 6, height: "436px", borderRadius: "20px" }}>
               <CardContent sx={{ color: "#fff" }}>
                 <Typography variant="h5" color="white" display={"flex"} justifyContent={"space-between"} mb={2}>
                   Invoices
-                  <Button sx={{ bgcolor: "#0075ff", borderRadius: "12px", fontSize: "10px", px: 2 }}>VIEW All</Button>
+                  <Button sx={{ bgcolor: "#0075ff", borderRadius: "12px", fontSize: "10px", px: 2 ,color:"#FFF"}}>VIEW All</Button>
                 </Typography>
                 <Box display={"flex"} flexDirection={"column"} gap={1}>
                   {[
@@ -136,7 +136,7 @@ function Billing() {
 
         {/* Payment Method */}
         <Grid container spacing={3} mt={{ xs: 2, md: -22 }} mb={5} >
-          <Grid item xs={12} md={8} sx={{width:{xs:"100%",md:"72%"}}}>
+          <Grid item xs={12} md={8} sx={{width:{xs:"100%",md:"62%"}}}>
             <Card sx={{ bgcolor: "#052c6b", boxShadow: 6, height:{xs:"300px",md:"173px"}, borderRadius: "20px" }}>
               <CardContent sx={{ color: "#fff", display: "flex", flexDirection: "column", gap: 4 }}>
                 <Box display={"flex"} justifyContent={"space-between"} alignItems={"center"} flexWrap="wrap">
@@ -170,15 +170,15 @@ function Billing() {
 
         {/* Billing Information & Transactions */}
         <Grid container spacing={3}>
-          <Grid item xs={12} md={6} sx={{width:{xs:"100%",md:"70%"}}}>
+          <Grid item xs={12} md={6} sx={{width:{xs:"100%",md:"62%"}}}>
             <Card sx={{ backgroundColor:"#062a6d" , boxShadow: 6, mb: 2, borderRadius: "20px" }}>
               <CardContent sx={{ color: "#fff", display: "flex", flexDirection: "column", gap: 3 }}>
                 <Typography variant="h5" color="white">Billing Information</Typography>
                 {[1, 2, 3].map((item) => (
-                  <Box key={item} mb={2} p={2} borderRadius={2} display="flex" justifyContent="space-between" alignItems="center"
+                  <Box key={item} mb={4} p={2} borderRadius={2} display="flex" justifyContent="space-between" alignItems="center"
                     sx={{ backgroundColor: "#081a46" }}>
                     <Box>
-                      <Typography fontWeight={700} color="white">Oliver Liam</Typography>
+                      <Typography fontWeight={700} color="white" >Oliver Liam</Typography>
                       <Typography variant="body2" color="rgba(160, 174, 192, 1)">Company Name: Viking Burrito</Typography>
                       <Typography variant="body2" color="rgba(160, 174, 192, 1)">Email: oliver@burrito.com</Typography>
                       <Typography variant="body2" color="rgba(160, 174, 192, 1)">VAT: FRB1235476</Typography>
@@ -193,8 +193,8 @@ function Billing() {
             </Card>
           </Grid>
 
-          <Grid item xs={12} md={6} sx={{width:{xs:"100%",md:"27%"}}}>
-            <Card sx={{ backgroundColor: "#062a6d", boxShadow: 6 }}>
+          <Grid item xs={12} md={6} sx={{width:{xs:"100%",md:"35%"},borderRadius:"20px"}}>
+            <Card sx={{ backgroundColor: "#061f4b", boxShadow: 6 }}>
               <CardContent sx={{ color: "#fff" ,borderRadius:"20px"}}>
                 <Typography variant="h5" color="white">Your Transactions</Typography>
                 <Box>
@@ -204,7 +204,7 @@ function Billing() {
                       <Box key={idx} display="flex" alignItems="center" justifyContent="space-between" py={1}>
                         <Stack direction="row" spacing={2} alignItems="center">
                           {tx.logo}
-                          <Stack spacing={0.3}>
+                          <Stack spacing={0.4}>
                             <Typography fontWeight={700} color="white">{tx.name}</Typography>
                             <Typography variant="body2" color="rgba(160,174,192,1)">{tx.time}</Typography>
                           </Stack>
@@ -218,9 +218,9 @@ function Billing() {
                     <Typography color="rgba(160,174,192,1)">Yesterday</Typography>
                     {Yesterday.map((tx, idx) => (
                       <Box key={idx} display="flex" alignItems="center" justifyContent="space-between" py={1}>
-                        <Stack direction="row" spacing={2} alignItems="center">
+                        <Stack direction="row" spacing={2} alignItems="center" mb={1}>
                           {tx.logo}
-                          <Stack spacing={0.3}>
+                          <Stack spacing={0.1}>
                             <Typography fontWeight={700} color="white">{tx.name}</Typography>
                             <Typography variant="body2" color="rgba(160,174,192,1)">{tx.time}</Typography>
                           </Stack>
