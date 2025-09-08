@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import {
   Box,
   Typography,
@@ -9,9 +9,18 @@ import {
   Paper,
   Switch,
 } from "@mui/material";
-import { Link } from "react-router-dom"; // ✅ React Router ka Link use karein
+import { Link } from "react-router-dom"; 
 
 export default function SignIn() {
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+
+  const handleSignIn = () => {
+    console.log("Email:", email, "Password:", password);
+    setEmail("");
+    setPassword("");
+  };
+
   return (
     <Grid container sx={{ minHeight: "100vh" }}>
       {/* Left Side with Image (Hide on mobile) */}
@@ -70,7 +79,7 @@ export default function SignIn() {
           sx={{
             width: "100%",
             maxWidth: 360,
-            pt: { xs: 6, md: 10 },
+            pt: { xs: 6, md: 7 },
             mt: 20,
             mr: { xs: 0, md: 20 },
           }}
@@ -92,6 +101,8 @@ export default function SignIn() {
           </Typography>
           <TextField
             fullWidth
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
             placeholder="Your email address"
             variant="outlined"
             margin="normal"
@@ -101,6 +112,19 @@ export default function SignIn() {
             sx={{
               borderRadius: "20px",
               mb: 3,
+                      
+    "& .MuiOutlinedInput-root": {
+      "& fieldset": {
+        borderColor: "#FFFFFF", 
+      },
+      "&:hover fieldset": {
+        borderColor: "#FFFFFF", 
+      },
+      "&.Mui-focused fieldset": {
+        borderColor: "#FFFFFF", 
+      },
+    },
+
             }}
           />
 
@@ -109,6 +133,8 @@ export default function SignIn() {
           </Typography>
           <TextField
             fullWidth
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
             placeholder="Your password"
             variant="outlined"
             margin="normal"
@@ -116,7 +142,20 @@ export default function SignIn() {
             InputProps={{
               style: { color: "#fff", borderRadius: 12 },
             }}
-            sx={{ borderRadius: "20px" }}
+                     sx={{
+    "& .MuiOutlinedInput-root": {
+      "& fieldset": {
+        borderColor: "#FFFFFF", 
+      },
+      "&:hover fieldset": {
+        borderColor: "#FFFFFF", 
+      },
+      "&.Mui-focused fieldset": {
+        borderColor: "#FFFFFF", 
+      },
+    },
+    borderRadius:"20px",
+  }}
           />
 
           <FormControlLabel
@@ -135,6 +174,7 @@ export default function SignIn() {
               textDecoration: "none",
               color: "white",
             }}
+            onClick={handleSignIn}
           >
             SIGN IN
           </Button>

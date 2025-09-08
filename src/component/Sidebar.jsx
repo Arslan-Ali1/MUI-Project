@@ -22,170 +22,29 @@ import LanguageIcon from "@mui/icons-material/Language";
 import PersonIcon from "@mui/icons-material/Person";
 import LoginIcon from "@mui/icons-material/Login";
 import AppRegistrationIcon from "@mui/icons-material/AppRegistration";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";   // ✅ useLocation import
 
 const menuItems1 = [
-  {
-    text: <ul style={{ listStyleType: "none", padding: 0, margin: 0 }}>
-  <li>
-    <Link to="/" style={{ color: "#ffff", textDecoration: "none" }}>
-      DashBoard
-    </Link>
-  </li>
-</ul>
-,
-    icon: (
-      <DashboardIcon
-        sx={{
-          backgroundColor: "#0075ff",
-          padding: "4px",
-          height: "30px",
-          width: "30px",
-          borderRadius: "12px"
-        }}
-      />
-    )
-  },
-  {
-    text: <ul style={{ listStyleType: "none", padding: 0, margin: 0 }}>
-  <li>
-    <Link to="/table" style={{ color: "white", textDecoration: "none" }}>
-      Tables
-    </Link>
-  </li>
-</ul>
-,
-    icon: (
-      <TableChartIcon
-        sx={{
-          backgroundColor: "#1A1F37",
-          color: "#0075ff",
-          padding: "4px",
-          height: "30px",
-          width: "30px",
-          borderRadius: "12px"
-        }}
-      />
-    )
-  },
-  {
-    text: <ul style={{ listStyleType: "none", padding: 0, margin: 0 }}>
-  <li>
-    <Link to="/billing" style={{ color: "#ffff", textDecoration: "none" }}>
-    Billing
-    </Link>
-  </li>
-</ul>,
-    icon: (
-      <ReceiptIcon
-        sx={{
-          backgroundColor: "#1A1F37",
-          color: "#0075ff",
-          padding: "4px",
-          height: "30px",
-          width: "30px",
-          borderRadius: "12px"
-        }}
-      />
-    )
-  },
-  {
-    text: <ul style={{ listStyleType: "none", padding: 0, margin: 0 }}>
-  <li>
-    <Link to="/" style={{ color: "#ffff", textDecoration: "none" }}>
-      RTL 
-    </Link>
-  </li>
-</ul>,
-    icon: (
-      <LanguageIcon
-        sx={{
-          backgroundColor: "#1A1F37",
-          color: "#0075ff",
-          padding: "4px",
-          height: "30px",
-          width: "30px",
-          borderRadius: "12px"
-        }}
-      />
-    )
-  }
+  { text: "Dashboard", path: "/", icon: <DashboardIcon /> },
+  { text: "Tables", path: "/table", icon: <TableChartIcon /> },
+  { text: "Billing", path: "/billing", icon: <ReceiptIcon /> },
+  { text: "RTL", path: "/rtl", icon: <LanguageIcon /> }
 ];
 
 const menuItems2 = [
-  {
-    text: <ul style={{ listStyleType: "none", padding: 0, margin: 0 ,mr:30}}>
-  <li>
-    <Link to="/profile" style={{ color: "#ffff", textDecoration: "none" }}>
-      Profile
-    </Link>
-  </li>
-</ul>,
-    icon: (
-      <PersonIcon
-        sx={{
-          backgroundColor: "#1A1F37",
-          color: "#0075ff",
-          padding: "4px",
-          height: "30px",
-          width: "30px",
-          borderRadius: "12px",
-        
-        }}
-      />
-    )
-  },
-  {
-    text: <ul style={{ listStyleType: "none", padding: 0, margin: 0 }}>
-  <li>
-    <Link to="/signIn" style={{ color: "#ffff", textDecoration: "none" }}>
-      SignIn
-    </Link>
-  </li>
-</ul>,
-    icon: (
-      <LoginIcon
-        sx={{
-          backgroundColor: "#1A1F37",
-          color: "#0075ff",
-          padding: "4px",
-          height: "30px",
-          width: "30px",
-          borderRadius: "12px"
-        }}
-      />
-    )
-  },
-  {
-    text: <ul style={{ listStyleType: "none", padding: 0, margin: 0 }}>
-  <li>
-    <Link to="/signUp" style={{ color: "#ffff", textDecoration: "none" }}>
-      SignUp
-    </Link>
-  </li>
-</ul>,
-    icon: (
-      <AppRegistrationIcon
-        sx={{
-          backgroundColor: "#1A1F37",
-          color: "#0075ff",
-          padding: "4px",
-          height: "30px",
-          width: "30px",
-          borderRadius: "12px"
-        }}
-      />
-    )
-  }
+  { text: "Profile", path: "/profile", icon: <PersonIcon /> },
+  { text: "SignIn", path: "/signIn", icon: <LoginIcon /> },
+  { text: "SignUp", path: "/signUp", icon: <AppRegistrationIcon /> }
 ];
 
 export default function Sidebar() {
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down("md"));
   const [open, setOpen] = useState(false);
+  const location = useLocation();  
 
   const drawerContent = (
-    <Box sx={{ display: "flex", flexDirection: "column", height: "100%",mr:2 }}>
+    <Box sx={{ display: "flex", flexDirection: "column", height: "100%", mr: 2 }}>
       <Box>
         <Typography
           variant="subtitle2"
@@ -194,19 +53,24 @@ export default function Sidebar() {
           VISION UI FREE
         </Typography>
 
+        {/* MAIN MENU */}
         <List sx={{ width: "200px", height: "220px" }}>
           {menuItems1.map((item, index) => (
             <ListItemButton
               key={index}
+              component={Link}
+              to={item.path}
               sx={{
                 borderRadius: "8px",
                 mb: 1,
                 background:
-                  index === 0 ? "rgba(59, 130, 246, 0.3)" : "transparent",
-                "&:hover": { background: "rgba(59, 130, 246, 0.2)" }
+                  location.pathname === item.path
+                    ? "rgba(59, 130, 246, 0.3)"
+                    : "transparent",   // ✅ Active Highlight
+                "&:hover": { background: "rgba(29, 105, 228, 0.2)" }
               }}
             >
-              <ListItemIcon sx={{ color: "white" }}>{item.icon}</ListItemIcon>
+               <ListItemIcon sx={{ color: "#0075ff" }}>{item.icon}</ListItemIcon>
               <ListItemText primary={item.text} />
             </ListItemButton>
           ))}
@@ -219,13 +83,20 @@ export default function Sidebar() {
           ACCOUNT PAGES
         </Typography>
 
+        {/* ACCOUNT PAGES */}
         <List>
           {menuItems2.map((item, index) => (
             <ListItemButton
               key={index}
+              component={Link}
+              to={item.path}
               sx={{
                 borderRadius: "8px",
                 mb: 1,
+                background:
+                  location.pathname === item.path
+                    ? "rgba(59, 130, 246, 0.3)"
+                    : "transparent",   // ✅ Active Highlight
                 "&:hover": { background: "rgba(59, 130, 246, 0.2)" }
               }}
             >
@@ -236,7 +107,7 @@ export default function Sidebar() {
         </List>
       </Box>
 
-      <Box sx={{ mt: 8 }}>
+      <Box sx={{ mt: 2}}>
         <Card
           sx={{
             borderRadius: "12px",
@@ -273,8 +144,8 @@ export default function Sidebar() {
         variant="contained"
         size="large"
         sx={{
-          margin: "10px",
-          marginTop: "20px",
+          // margin: "10px",
+          marginTop: "2px",
           background: "#0c98fe",
           color: "white",
           textTransform: "none",
@@ -288,13 +159,13 @@ export default function Sidebar() {
 
   return (
     <>
-      {/* Mobile Menu Button (right side) */}
+      {/* Mobile Menu Button */}
       {isMobile && (
         <IconButton
           onClick={() => setOpen(true)}
           sx={{
             position: "fixed",
-            top: 24 ,
+            top: 24,
             right: 20,
             color: "#0075ff",
             zIndex: 1300
@@ -305,7 +176,7 @@ export default function Sidebar() {
       )}
 
       <Drawer
-        anchor={isMobile ? "left" : "left"} 
+        anchor={isMobile ? "left" : "left"}
         variant={isMobile ? "temporary" : "permanent"}
         open={isMobile ? open : true}
         onClose={() => setOpen(false)}

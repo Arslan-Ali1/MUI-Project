@@ -18,6 +18,15 @@ import GoogleIcon from "@mui/icons-material/Google";
 import { Link } from "react-router-dom"; 
 
 export default function SignUp() {
+  const [name, setName] = React.useState("");
+  const [email, setEmail] = React.useState("");
+  const [password, setPassword] = React.useState(""); 
+   const handleSignUp = () => {
+    console.log("Name:", name, "Email:", email, "Password:", password);
+    setName("");
+    setEmail("");
+    setPassword("");
+  }
   return (
     <Grid container sx={{ minHeight: "100vh" }}>
       {/* Left Side - Image + Text */}
@@ -197,20 +206,37 @@ export default function SignUp() {
                 <Typography color="#ffff" display={"flex"} justifyContent={"left"}>
                   Name
                 </Typography>
-                <TextField
-                  fullWidth
-                  label="Name"
-                  variant="outlined"
-                  margin="normal"
-                  InputLabelProps={{ style: { color: "#aaa" } }}
-                  InputProps={{
-                    style: { color: "#fff", borderRadius: 12 },
-                  }}
-                />
+              <TextField
+  fullWidth
+  value={name}
+  onChange={(e) => setName(e.target.value)}
+  label="Your full name"
+  variant="outlined"
+  margin="normal"
+  InputLabelProps={{ style: { color: "#aaa" } }}
+  InputProps={{
+    style: { color: "#fff", borderRadius: 12 },
+  }}
+  sx={{
+    "& .MuiOutlinedInput-root": {
+      "& fieldset": {
+        borderColor: "#FFFFFF", // White border
+      },
+      "&:hover fieldset": {
+        borderColor: "#FFFFFF", // White border on hover
+      },
+      "&.Mui-focused fieldset": {
+        borderColor: "#FFFFFF", // White border when focused
+      },
+    },
+  }}
+/>
               </Box>
 
               <TextField
                 fullWidth
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
                 label="Email"
                 type="email"
                 variant="outlined"
@@ -219,10 +245,26 @@ export default function SignUp() {
                 InputProps={{
                   style: { color: "#fff", borderRadius: 12 },
                 }}
+                 sx={{
+    "& .MuiOutlinedInput-root": {
+      "& fieldset": {
+        borderColor: "#FFFFFF", 
+      },
+      "&:hover fieldset": {
+        borderColor: "#FFFFFF", 
+      },
+      "&.Mui-focused fieldset": {
+        borderColor: "#FFFFFF", 
+      },
+    },
+  }}
               />
 
               <TextField
                 fullWidth
+                value={password}    
+                onChange={(e) => setPassword(e.target.value)}
+
                 label="Password"
                 type="password"
                 variant="outlined"
@@ -231,6 +273,20 @@ export default function SignUp() {
                 InputProps={{
                   style: { color: "#fff", borderRadius: 12 },
                 }}
+                         sx={{
+    "& .MuiOutlinedInput-root": {
+      "& fieldset": {
+        borderColor: "#FFFFFF", 
+      },
+      "&:hover fieldset": {
+        borderColor: "#FFFFFF", 
+      },
+      "&.Mui-focused fieldset": {
+        borderColor: "#FFFFFF", 
+      },
+    },
+  }}
+                
               />
 
               <FormControlLabel
@@ -251,7 +307,9 @@ export default function SignUp() {
                   color: "white",
                   textDecoration: "none",
                 }}
+                onClick={handleSignUp}
               >
+
                 Sign Up 
               </Button>
 

@@ -170,7 +170,7 @@ export default function Profile() {
         <Grid item xs={12} container spacing={3} >
 
           {/* Welcome */}
-          <Grid item xs={12} md={4} sx={{width:{xs:"100%",md:"30%"}}}>
+          <Grid space xs={12} md={4} sx={{width:{xs:"100%",md:"25%"}}} >
             <Card sx={{
              width:{xs:"100%",md:"100%"},
               height: "377px",
@@ -183,7 +183,7 @@ export default function Profile() {
             }}>
               <Box display={"flex"} justifyContent={"space-between"} flexDirection={"column"} gap={30}>
               <Box>                
-              <Typography variant="h4" sx={{ color: "white", fontWeight: 800 }}>Welcome back!</Typography>
+              <Typography variant="h5" sx={{ color: "white", fontWeight: 800 }}>Welcome back!</Typography>
               <Typography sx={{ color: "rgba(255,255,255,0.85)" }}>Nice to see you, Mark Johnson!</Typography>
               </Box>
                <Box >
@@ -201,7 +201,7 @@ export default function Profile() {
            <Grid
   item
   xs={12}
-  sx={{ width: { xs: "100%", md: "40%" } }}
+  sx={{ width: { xs: "100%", md: "45%" } }}
 >
   <Card
     sx={{
@@ -305,7 +305,7 @@ export default function Profile() {
             <Card sx={{ bgcolor: "rgba(255,255,255,0.05)", borderRadius: 2, p: 2 }}>
               <Stack spacing={1} display={"flex"} flexDirection={"row"} gap={3} sx={{justifyContent:{xs:"space-between"}}}>
                 <Box display="flex" alignItems="left" flexDirection={"column"} gap={1}>
-                <Typography variant="subtitle2" sx={{ color: "#fff" ,fontSize:"12px"}}>
+                <Typography variant="subtitle2" sx={{ color: "#fff" }}>
                   Health  
                 </Typography>
                   <Typography variant="h6" fontWeight="bold" sx={{ color: "#fff" }}>
@@ -337,7 +337,7 @@ export default function Profile() {
               <Stack spacing={1} display={"flex"} flexDirection={"row"} alignItems={"center"}gap={2} sx={{justifyContent:{xs:"space-between"}}}>
                 <Box display={"flex"} flexDirection={"column"}>
 
-                <Typography variant="subtitle2" sx={{ color: "#fff",fontSize:"10px" }}>
+                <Typography variant="subtitle2" sx={{ color: "#fff",fontSize:"12px" }}>
                   Consumption
                 </Typography>
                 <Box display="flex" justifyContent={"left"} gap={1}>

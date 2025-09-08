@@ -13,12 +13,16 @@
 }
 
 body {  
-  background-color: var(--background-color);
+  background-image: url("/BackgroundBody.png");
+  background-size: cover;        /* makes image cover screen */
+  background-repeat: no-repeat;  /* prevents repeating */
+  background-position: center;   /* centers the image */
   font-family: 'Inter', sans-serif;
   color: var(--text-color);
   line-height: 1.6;
-  min-height: 100vh;  /* ✅ fixed */
+  min-height: 100vh;  
 }
+
 
 h1, h2, h3, h4, h5, h6 {
   font-weight: 700;

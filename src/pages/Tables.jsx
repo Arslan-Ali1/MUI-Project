@@ -117,12 +117,12 @@ export default function Tables() {
       sx={{
         width: { xs: "100%", md: "calc(100% - 260px)" },
         ml: { xs: 0, md: "260px" },
-        mt:10,
-        backgroundColor:"#013578"
+        mt:12,
+       
       }}
     >
       {/* Authors Card */}
-      <Box sx={{ mb: 4, mt: 6 }}>
+      <Box sx={{ m:2 }}>
         <Card
           sx={{
             width: "100%",
@@ -248,7 +248,7 @@ export default function Tables() {
       </Box>
 
       {/* Projects Card */}
-      <Box>
+      <Box sx={{m:2}}>
         <Card
           sx={{
             width: "100%",

@@ -6,6 +6,7 @@ import NotesIcon from '@mui/icons-material/TextSnippet';
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 
 export default function Cards() {
+  const [selected, setSelected] = React.useState(null);
   const stats = [
     {
       label: "Today's Money",
@@ -44,17 +45,18 @@ export default function Cards() {
         display: "grid",
         gridTemplateColumns: "repeat(auto-fit, minmax(220px, 1fr))",
         gap: 3,
-        bgcolor: "#041c45",
+       
         p: 2,
-        width: { xs: "100%", md: "calc(100% - 300px)" }, // responsive sidebar offset
-        ml: { xs: 0, md: "260px" }, // mobile pe sidebar hata do
-        mt: { xs: "70px", md: "80px" }, // navbar ke liye jagah
+        width: { xs: "100%", md: "calc(100% - 300px)" },
+        ml: { xs: 0, md: "260px" }, 
+        mt: { xs: "70px", md: "80px" }, 
         
       }}
     >
       {stats.map((stat, index) => (
         <Card
-          key={index}
+        key={index}
+        onClick={() => setSelected(index)}
           sx={{
             bgcolor: "#0d1f43",
             color: "white",
@@ -62,8 +64,11 @@ export default function Cards() {
             alignItems: "center",
             justifyContent: "space-between",
             p: 2,
+            cursor: "pointer",
+            border: selected === index ? "2px solid #0075ff" : "none",
+            transition: "border 0.3s ease",
             borderRadius: 2,
-            boxShadow: stat.highlight
+            boxShadow: selected === index
               ? "0 0 10px rgba(0,150,255,0.7)"
               : "none",
           }}
