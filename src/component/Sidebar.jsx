@@ -28,7 +28,7 @@ const menuItems1 = [
   { text: "Dashboard", path: "/", icon: <DashboardIcon /> },
   { text: "Tables", path: "/table", icon: <TableChartIcon /> },
   { text: "Billing", path: "/billing", icon: <ReceiptIcon /> },
-  { text: "RTL", path: "/rtl", icon: <LanguageIcon /> }
+  // { text: "RTL", path: "/rtl", icon: <LanguageIcon /> }
 ];
 
 const menuItems2 = [
@@ -70,7 +70,7 @@ export default function Sidebar() {
                 "&:hover": { background: "rgba(29, 105, 228, 0.2)" }
               }}
             >
-               <ListItemIcon sx={{ color: "#0075ff" }}>{item.icon}</ListItemIcon>
+              <ListItemIcon sx={{ color: "#0075ff" }}>{item.icon}</ListItemIcon>
               <ListItemText primary={item.text} />
             </ListItemButton>
           ))}
@@ -107,7 +107,7 @@ export default function Sidebar() {
         </List>
       </Box>
 
-      <Box sx={{ mt: 2}}>
+      <Box sx={{ display:"flex", flexDirection:"column", gap:2  ,justifyContent:"end", flexGrow:1}}>
         <Card
           sx={{
             borderRadius: "12px",
@@ -116,7 +116,7 @@ export default function Sidebar() {
             backgroundImage: "url('/bottom.png') "
           }}
         >
-          <CardContent sx={{ textAlign: "center" }}>
+          <CardContent sx={{ textAlign: "center", display: "flex", flexDirection: "column", alignItems: "center", gap: 0.5}}>
             <Typography variant="h6" fontWeight="bold" color="white">
               Need help?
             </Typography>
@@ -144,7 +144,6 @@ export default function Sidebar() {
         variant="contained"
         size="large"
         sx={{
-          // margin: "10px",
           marginTop: "2px",
           background: "#0c98fe",
           color: "white",
@@ -165,9 +164,9 @@ export default function Sidebar() {
           onClick={() => setOpen(true)}
           sx={{
             position: "fixed",
-            top: 24,
-            right: 20,
-            color: "#0075ff",
+            top: 25,
+            right: 30,
+            color: "#A0AEC0",
             zIndex: 1300
           }}
         >
@@ -176,10 +175,19 @@ export default function Sidebar() {
       )}
 
       <Drawer
-        anchor={isMobile ? "left" : "left"}
+        anchor="left"
         variant={isMobile ? "temporary" : "permanent"}
         open={isMobile ? open : true}
         onClose={() => setOpen(false)}
+        ModalProps={{
+          keepMounted: true,
+          BackdropProps: {
+            sx: {
+              backgroundColor: "transparent", // 🔥 blur hat gaya
+              backdropFilter: "none",
+            },
+          },
+        }}
         sx={{
           width: 260,
           flexShrink: 0,
@@ -188,7 +196,8 @@ export default function Sidebar() {
             height: "100vh",
             boxSizing: "border-box",
             background:
-              "linear-gradient(rgba(6, 11, 38, 0.94),rgba(26, 31, 55, 0))",
+              // "linear-gradient(rgba(6, 11, 38, 0.94),rgba(26, 31, 55, 0))",
+              "linear-gradient(135deg, rgba(6, 11, 40, 1.3), rgba(10, 14, 35, 1.11))",
             color: "white",
             padding: "1rem",
             display: "flex",

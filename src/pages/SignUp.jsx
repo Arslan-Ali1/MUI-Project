@@ -75,10 +75,11 @@ export default function SignUp() {
           bgcolor: "#0b0f33",
           p: 2,
           width: { xs: "100%", md: "50%" },
+          
         }}
       >
         <Box sx={{ mt: { xs: 10, md: 20 }, mr: { xs: 0, md: 20 } }}>
-          <Box mt={"80px"}>
+          <Box mt={"80px"} sx={{  mx: { xs: "auto" }, mr:{xs:"auto",md:"100px"}}}>
             <Typography
               variant="h5"
               fontWeight="bold"
@@ -119,16 +120,19 @@ export default function SignUp() {
             </Typography>
           </Box>
 
-          <Card
-            sx={{
-              width: "452px",
-              maxWidth: 400,
-              borderRadius: "30px",
-              bgcolor: "#131738",
-              color: "#fff",
-              boxShadow: "0 8px 24px rgba(0,0,0,0.4)",
-            }}
-          >
+         <Card
+  sx={{
+    width: { xs: "100%", sm: "90%", md: "420px" }, // mobile par full width, tablet par 90%, desktop par fixed
+    mx: { xs: "auto", md: 0 }, 
+    borderRadius: "30px",
+    bgcolor: "#131738",
+    color: "#fff",
+    boxShadow: "0 8px 24px rgba(0,0,0,0.4)",
+    p: { xs: 1, md: 1 }, 
+    mb:10
+  }}
+>
+
             <CardContent sx={{ textAlign: "center" }}>
               {/* Social Register */}
               <Typography sx={{ color: "#fff", mb: 2, mt: 5 }} variant="h5">
@@ -232,6 +236,9 @@ export default function SignUp() {
   }}
 />
               </Box>
+              <Typography color="#ffff" display={"flex"} justifyContent={"left"}>
+                  Email
+                </Typography>
 
               <TextField
                 fullWidth
@@ -259,6 +266,11 @@ export default function SignUp() {
     },
   }}
               />
+              <Box>
+                <Typography color="#ffff" display={"flex"} justifyContent={"left"}>
+                  Password
+                </Typography>
+
 
               <TextField
                 fullWidth
@@ -286,8 +298,9 @@ export default function SignUp() {
       },
     },
   }}
-                
-              />
+  
+  />
+  </Box>
 
               <FormControlLabel
                 control={<Checkbox sx={{ color: "#fff" }} />}
@@ -323,7 +336,41 @@ export default function SignUp() {
                 </Link>
               </Typography>
             </CardContent>
+            
           </Card>
+           <Typography variant="caption" sx={{  opacity: 0.7,mx:1,fontSize:"14px",textAlign:"left" }}>
+                      © 2021, Made with ❤️ by Simmmple & Creative Tim for a better web
+                    </Typography>
+          
+                    <Box display={"flex"} justifyContent={"center"} gap={6} mt={2}>
+                      <span
+                        style={{
+                          color: "rgba(160, 174, 192, 1)",
+                          cursor: "pointer",
+                          fontSize: "14px",
+                        }}
+                      >
+                        Marketplace
+                      </span>
+                      <span
+                        style={{
+                          color: "rgba(160, 174, 192, 1)",
+                          cursor: "pointer",
+                          fontSize: "14px",
+                        }}
+                      >
+                        Blog
+                      </span>
+                      <span
+                        style={{
+                          color: "rgba(160, 174, 192, 1)",
+                          cursor: "pointer",
+                          fontSize: "14px",
+                        }}
+                      >
+                        License
+                      </span>
+                    </Box>
         </Box>
       </Grid>
     </Grid>

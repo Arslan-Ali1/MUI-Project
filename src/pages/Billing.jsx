@@ -26,7 +26,7 @@ function Billing() {
   return (
     <Box
       sx={{
-        mt: 10,
+        mt: 12,
         fontFamily: "Roboto, sans-serif",
         width: { xs: "100%", md: "calc(100% - 260px)" },
         ml: { xs: 0, md: "260px" },
@@ -135,8 +135,8 @@ function Billing() {
         </Grid>
 
         {/* Payment Method */}
-        <Grid container spacing={3} mt={{ xs: 2, md: -22 }} mb={5} >
-          <Grid item xs={12} md={8} sx={{width:{xs:"100%",md:"62%"}}}>
+        <Grid container spacing={3} mt={{ xs: 2, md: -22 }} mb={5}  >
+          <Grid item xs={12} md={8} sx={{width:{xs:"100%",md:"62%", m:{xs:2,md:0}}}}>
             <Card sx={{ bgcolor: "#052c6b", boxShadow: 6, height:{xs:"300px",md:"173px"}, borderRadius: "20px" }}>
               <CardContent sx={{ color: "#fff", display: "flex", flexDirection: "column", gap: 4 }}>
                 <Box display={"flex"} justifyContent={"space-between"} alignItems={"center"} flexWrap="wrap">

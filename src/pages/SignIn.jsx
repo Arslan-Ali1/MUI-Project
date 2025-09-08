@@ -194,7 +194,10 @@ export default function SignIn() {
             </Link>
           </Typography>
 
-          <Typography variant="caption" sx={{ mt: 5, opacity: 0.7 }}>
+        </Box>
+        <Box display={"flex"} flexDirection={"column"} justifyContent={"left"} mr={10}>
+
+          <Typography variant="caption" sx={{ mt: 5, opacity: 0.7 ,fontSize:"14px"}}>
             © 2021, Made with ❤️ by Simmmple & Creative Tim for a better web
           </Typography>
 
@@ -203,7 +206,7 @@ export default function SignIn() {
               style={{
                 color: "rgba(160, 174, 192, 1)",
                 cursor: "pointer",
-                fontSize: "13px",
+                fontSize: "14px",
               }}
             >
               Marketplace
@@ -212,7 +215,7 @@ export default function SignIn() {
               style={{
                 color: "rgba(160, 174, 192, 1)",
                 cursor: "pointer",
-                fontSize: "13px",
+                fontSize: "14px",
               }}
             >
               Blog
@@ -221,7 +224,7 @@ export default function SignIn() {
               style={{
                 color: "rgba(160, 174, 192, 1)",
                 cursor: "pointer",
-                fontSize: "13px",
+                fontSize: "14px",
               }}
             >
               License

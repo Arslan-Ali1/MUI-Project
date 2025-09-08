@@ -13,10 +13,10 @@ import SettingsIcon from "@mui/icons-material/Settings";
 import NotificationIcon from "@mui/icons-material/Notifications";
 import { useLocation } from "react-router-dom"; 
 import HomeIcon from '@mui/icons-material/Home';
+
 export default function Navbar() {
   const location = useLocation();
 
-  // Path se page ka name nikalna
   const pathName = location.pathname.split("/").filter(Boolean); 
   const currentPage = pathName[pathName.length - 1] || "Dashboard"; 
 
@@ -27,15 +27,20 @@ export default function Navbar() {
         position="fixed"
         elevation={0}
         sx={{
-          width: { xs: "100%", md: "calc(100% - 260px)" },
-          ml: { xs: 0, md: "260px" },
+          width: { xs: "95%", md: "calc(100% - 280px)" },
+          ml: { xs: 0, md: "275px" },
           mt: "10px",
-          borderRadius: "8px",
-          backgroundColor: "#061c45",
+          mx:{ xs: 2, md:1},
+          borderRadius: "12px",
+          background: "rgba(15, 23, 42, 0.6)",  
+          backdropFilter: "blur(12px)",        
+          WebkitBackdropFilter: "blur(12px)",    
           px: 2,
           height: 52,
           justifyContent: "center",
           minHeight: "70px",
+          boxShadow: "0 4px 20px rgba(0,0,0,0.2)",
+          border: "1px solid rgba(255,255,255,0.1)" 
         }}
       >
         <Toolbar

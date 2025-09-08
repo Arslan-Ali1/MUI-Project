@@ -49,7 +49,7 @@ export default function Cards() {
         p: 2,
         width: { xs: "100%", md: "calc(100% - 300px)" },
         ml: { xs: 0, md: "260px" }, 
-        mt: { xs: "70px", md: "80px" }, 
+        mt: { xs: "90px", md: "80px" }, 
         
       }}
     >
