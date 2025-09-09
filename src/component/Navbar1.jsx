@@ -1,4 +1,3 @@
-// src/components/Navbar.jsx
 import React, { useState } from "react";
 import {
   AppBar,
@@ -13,7 +12,6 @@ import {
   ListItemText,
   Modal,
   Fade,
-  Backdrop,
 } from "@mui/material";
 import MenuIcon from "@mui/icons-material/Menu";
 import DashboardIcon from "@mui/icons-material/Dashboard";
@@ -47,17 +45,16 @@ export default function Navbar1() {
         position="fixed"
         elevation={0}
         sx={{
-          
-          background: "rgba(255, 255, 255, 0.4)",
+          backgroundColor: "#233558ff",
           boxShadow: "none",
           width: { xs: "95%", md: "70%" },
           border: "2px solid",
+          borderColor: "#4f5e7aff",
           borderRadius: "20px",
           mt: 2,
           mr: { xs: 0, md: 25 },
           px: { xs: 2, md: 0 },
           mx: { xs: 1 },
-       
         }}
       >
         <Toolbar
@@ -70,10 +67,10 @@ export default function Navbar1() {
         >
           {/* Logo */}
           <Typography
-            variant="h6"
+            variant="h5"
             sx={{ fontWeight: "bold", color: "white", letterSpacing: 1 }}
           >
-            VISION UI FREE
+            VISION UI
           </Typography>
 
           {/* Desktop Links */}
@@ -84,16 +81,36 @@ export default function Navbar1() {
               alignItems: "center",
             }}
           >
-            <Button component={Link} to="/" startIcon={<DashboardIcon />} sx={{ color: "white", textTransform: "none" }}>
+            <Button
+              component={Link}
+              to="/"
+              startIcon={<DashboardIcon />}
+              sx={{ color: "white", textTransform: "none" }}
+            >
               Dashboard
             </Button>
-            <Button component={Link} to="/profile" startIcon={<PersonIcon />} sx={{ color: "white", textTransform: "none" }}>
+            <Button
+              component={Link}
+              to="/profile"
+              startIcon={<PersonIcon />}
+              sx={{ color: "white", textTransform: "none" }}
+            >
               Profile
             </Button>
-            <Button component={Link} to="/signUp" startIcon={<PersonAddIcon />} sx={{ color: "white", textTransform: "none" }}>
+            <Button
+              component={Link}
+              to="/signUp"
+              startIcon={<PersonAddIcon />}
+              sx={{ color: "white", textTransform: "none" }}
+            >
               Sign Up
             </Button>
-            <Button component={Link} to="/signIn" startIcon={<VpnKeyIcon />} sx={{ color: "white", textTransform: "none" }}>
+            <Button
+              component={Link}
+              to="/signIn"
+              startIcon={<VpnKeyIcon />}
+              sx={{ color: "white", textTransform: "none" }}
+            >
               Sign In
             </Button>
             <Button
@@ -119,7 +136,7 @@ export default function Navbar1() {
             onClick={handleDrawerToggle}
             sx={{ display: { md: "none" }, color: "white" }}
           >
-            <MenuIcon />
+            {mobileOpen ? <CloseIcon /> : <MenuIcon />}
           </IconButton>
         </Toolbar>
       </AppBar>
@@ -127,16 +144,14 @@ export default function Navbar1() {
       {/* Custom Modal for Mobile Menu */}
       <Modal
         open={mobileOpen}
-        onClose={handleDrawerToggle}
+        onClose={() => setMobileOpen(false)}
         closeAfterTransition
-        slots={{ backdrop: Backdrop }}
-        slotProps={{ backdrop: { timeout: 300 } }}
       >
-        <Fade in={mobileOpen}>
+        <Fade in={mobileOpen} mountOnEnter unmountOnExit>
           <Box
             sx={{
               position: "absolute",
-              top: "90px", // navbar ke bilkul neeche
+              top: "90px",
               left: "50%",
               transform: "translateX(-50%)",
               width: "60%",
@@ -148,21 +163,13 @@ export default function Navbar1() {
               p: 2,
             }}
           >
-            {/* Close Button */}
-            <IconButton
-              onClick={handleDrawerToggle}
-              sx={{ position: "absolute", top: 8, right: 8, color: "white" }}
-            >
-              <CloseIcon />
-            </IconButton>
-
             <List>
               {navItems.map((item) => (
                 <ListItem key={item.text} disablePadding>
                   <ListItemButton
                     component={Link}
                     to={item.path}
-                    onClick={handleDrawerToggle}
+                    onClick={() => setMobileOpen(false)}
                     sx={{ color: "white", textAlign: "center" }}
                   >
                     <ListItemText

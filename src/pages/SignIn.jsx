@@ -80,11 +80,11 @@ export default function SignIn() {
             width: "100%",
             maxWidth: 360,
             pt: { xs: 6, md: 7 },
-            mt: 20,
+            mt: 8,
             mr: { xs: 0, md: 20 },
           }}
         >
-          <Typography variant="h4" fontWeight="bold" mb={1} color="#ffff">
+          <Typography variant="h4" fontWeight="bold" mb={1} color="#ffff" fontSize={"38px"}>
             Nice to see you!
           </Typography>
           <Typography
@@ -195,7 +195,7 @@ export default function SignIn() {
           </Typography>
 
         </Box>
-        <Box display={"flex"} flexDirection={"column"} justifyContent={"left"} mr={10}>
+        {/* <Box display={"flex"} flexDirection={"column"} justifyContent={"left"} mr={10}>
 
           <Typography variant="caption" sx={{ mt: 5, opacity: 0.7 ,fontSize:"14px"}}>
             © 2021, Made with ❤️ by Simmmple & Creative Tim for a better web
@@ -230,7 +230,7 @@ export default function SignIn() {
               License
             </span>
           </Box>
-        </Box>
+        </Box> */}
       </Grid>
     </Grid>
   );

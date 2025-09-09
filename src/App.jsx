@@ -17,7 +17,7 @@ const Pages = ({ children }) => (
     <Sidebar />
       <Navbar/>
     {children}
-    <Footer/>
+    {/* <Footer/> */}
   </>
 );
 

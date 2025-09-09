@@ -78,10 +78,10 @@ export default function SignUp() {
           
         }}
       >
-        <Box sx={{ mt: { xs: 10, md: 20 }, mr: { xs: 0, md: 20 } }}>
-          <Box mt={"80px"} sx={{  mx: { xs: "auto" }, mr:{xs:"auto",md:"100px"}}}>
+        <Box sx={{ mt: { xs: 10, md: 10 }, mr: { xs: 0, md: 20 } }}>
+          <Box mt={"80px"} sx={{  mx: { xs: "auto" }}}>
             <Typography
-              variant="h5"
+              variant="h4"
               fontWeight="bold"
               gutterBottom
               color="#ffff"
@@ -338,7 +338,7 @@ export default function SignUp() {
             </CardContent>
             
           </Card>
-           <Typography variant="caption" sx={{  opacity: 0.7,mx:1,fontSize:"14px",textAlign:"left" }}>
+           {/* <Typography variant="caption" sx={{  opacity: 0.7,mx:1,fontSize:"14px",textAlign:"left" }}>
                       © 2021, Made with ❤️ by Simmmple & Creative Tim for a better web
                     </Typography>
           
@@ -370,7 +370,7 @@ export default function SignUp() {
                       >
                         License
                       </span>
-                    </Box>
+                    </Box> */}
         </Box>
       </Grid>
     </Grid>

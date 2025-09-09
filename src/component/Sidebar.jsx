@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState,useEffect } from "react";
 import {
   Drawer,
   Box,
@@ -22,7 +22,9 @@ import LanguageIcon from "@mui/icons-material/Language";
 import PersonIcon from "@mui/icons-material/Person";
 import LoginIcon from "@mui/icons-material/Login";
 import AppRegistrationIcon from "@mui/icons-material/AppRegistration";
-import { Link, useLocation } from "react-router-dom";   // ✅ useLocation import
+import { Link, useLocation } from "react-router-dom";  
+
+
 
 const menuItems1 = [
   { text: "Dashboard", path: "/", icon: <DashboardIcon /> },
@@ -43,16 +45,30 @@ export default function Sidebar() {
   const [open, setOpen] = useState(false);
   const location = useLocation();  
 
+  useEffect(() => {
+  if (isMobile) {
+    setOpen(false);
+  }
+}, [location.pathname, isMobile]);
+
   const drawerContent = (
     <Box sx={{ display: "flex", flexDirection: "column", height: "100%", mr: 2 }}>
       <Box>
+        {/* LOGO */}
+        <Box sx={{display:"flex",flexDirection:"row",alignItems:"center",justifyContent:"center",gap:2,mb:2}}>
+          <Box style={{width:"30px",height:"30px",backgroundColor:"white",borderRadius:"10px",display:"flex",justifyContent:"center",alignItems:"center"}}>
+
+          <img style={{width:"15px",height:"15px"}} src="/VisionLogo.png" alt="" />
+          </Box>
+
         <Typography
-          variant="subtitle2"
-          sx={{ opacity: 0.7, mb: 2, color: "white", textAlign: "center" }}
-        >
-          VISION UI FREE
+          variant="h6 "
+          sx={{ opacity: 0.7,  color: "white", textAlign: "center" }}
+          >
+          VISION UI
         </Typography>
 
+          </Box>
         {/* MAIN MENU */}
         <List sx={{ width: "200px", height: "220px" }}>
           {menuItems1.map((item, index) => (
@@ -62,7 +78,7 @@ export default function Sidebar() {
               to={item.path}
               sx={{
                 borderRadius: "8px",
-                mb: 1,
+                mb: "10px",
                 background:
                   location.pathname === item.path
                     ? "rgba(59, 130, 246, 0.3)"
@@ -78,7 +94,7 @@ export default function Sidebar() {
 
         <Typography
           variant="subtitle2"
-          sx={{ mt: 2, mb: 1, fontSize: "15px", color: "#FFFF" }}
+          sx={{mt:"-10px", mb: 1, fontSize: "15px", color: "#FFFF" }}
         >
           ACCOUNT PAGES
         </Typography>
@@ -148,7 +164,9 @@ export default function Sidebar() {
           background: "#0c98fe",
           color: "white",
           textTransform: "none",
-          "&:hover": { background: "#f1f5f9" }
+          "&:hover": { background: "#f1f5f9" },
+          pb: "10px",
+         
         }}
       >
         Upgrade To PRO

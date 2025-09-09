@@ -6,6 +6,7 @@ import {
   Box,
   InputBase,
   IconButton,
+  
 } from "@mui/material";
 import SearchIcon from "@mui/icons-material/Search";
 import PersonIcon from "@mui/icons-material/Person";
@@ -13,6 +14,7 @@ import SettingsIcon from "@mui/icons-material/Settings";
 import NotificationIcon from "@mui/icons-material/Notifications";
 import { useLocation } from "react-router-dom"; 
 import HomeIcon from '@mui/icons-material/Home';
+import { Link } from "react-router-dom";
 
 export default function Navbar() {
   const location = useLocation();
@@ -100,7 +102,8 @@ export default function Navbar() {
             </Box>
 
             {/* Sign In */}
-            <IconButton sx={{ color: "#718096", fontSize: "0.8rem" }}>
+            <IconButton component={Link} to="/signin" sx={{ color: "#718096", fontSize: "0.8rem" }}>
+              
               <PersonIcon fontSize="small" />
               <Typography
                 sx={{ ml: 0.5, fontSize: "0.85rem", color: "#718096" }}
